@@ -13,7 +13,7 @@ export const Home = () => {
   return (
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange}/>
-      { journey === null ? null : <JourneyDetail />}
+      { journey === null ? null : <JourneyDetail journey={journey}/>}
     </main>
   );
 }
