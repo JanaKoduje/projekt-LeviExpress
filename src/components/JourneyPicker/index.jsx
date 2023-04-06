@@ -44,6 +44,8 @@ export const JourneyPicker = ({ onJourneyChange }) => {
     console.log("Date: ", date)
   }
 
+  const submitDisable = fromCity === '' || toCity === '' || date === ''
+
   useEffect(() => {
     fetch(`${API_BASE_URL}/cities`)
     .then((response) => response.json())
@@ -57,6 +59,8 @@ export const JourneyPicker = ({ onJourneyChange }) => {
       setDates(data.results)
     })
   }, [])
+
+  
 
 
   return (
@@ -85,6 +89,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
           </label>
           <div className="journey-picker__controls">
             <button
+              disabled = {submitDisable}
               className="btn"
               type="submit"
             >
