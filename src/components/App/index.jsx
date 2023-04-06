@@ -4,7 +4,7 @@ import { Footer } from '../Footer';
 import { Header } from '../Header';
 import { Home } from '../Home';
 import { Reservation } from '../Reservation';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 export const App = () => (
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/reservation',
+    path: '/reservation/:reservationId',
     element: <Reservation />
   }
 ])
