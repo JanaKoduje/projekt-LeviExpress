@@ -39,9 +39,11 @@ export const JourneyPicker = ({ onJourneyChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("From: ", fromCity)
-    console.log("To: ", toCity)
-    console.log("Date: ", date)
+
+    fetch(
+      `${API_BASE_URL}/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data.results))
   }
 
   const submitDisable = fromCity === '' || toCity === '' || date === ''
