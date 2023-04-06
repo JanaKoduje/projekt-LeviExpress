@@ -63,8 +63,6 @@ export const JourneyPicker = ({ onJourneyChange }) => {
   }, [])
 
 
-
-
   return (
     <div className="journey-picker container">
       <h2 className="journey-picker__head">Kam chcete jet?</h2>
