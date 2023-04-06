@@ -43,7 +43,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
     fetch(
       `${API_BASE_URL}/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`)
       .then((response) => response.json())
-      .then((data) => console.log(data.results))
+      .then((data) => onJourneyChange(data.results))
   }
 
   const submitDisable = fromCity === '' || toCity === '' || date === ''
