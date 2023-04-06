@@ -7,7 +7,7 @@ export const JourneyDetail = ({ journey }) => {
         <div className="journey-detail container">
             <h2>Podrobnosti cesty</h2>
             <div className="stops">
-                <BusStop />
+                <BusStop name="Praha" station="ÚAN Florenc" time="15:55" />
               
             </div>
         </div>
