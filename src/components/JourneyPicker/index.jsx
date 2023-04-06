@@ -14,7 +14,7 @@ const CityOptions = ({ cities }) => {
   )
 }
 
-const DateOptions = ({dates}) => {
+const DateOptions = ({ dates }) => {
   return (
     <>
       <option value="">Vyberte</option>
@@ -48,19 +48,19 @@ export const JourneyPicker = ({ onJourneyChange }) => {
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/cities`)
-    .then((response) => response.json())
-    .then((data) => {
-      setCities(data.results)
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCities(data.results)
+      })
 
     fetch(`${API_BASE_URL}/dates`)
-    .then((response) => response.json())
-    .then((data) => {
-      setDates(data.results)
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDates(data.results)
+      })
   }, [])
 
-  
+
 
 
   return (
@@ -78,7 +78,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
           <label>
             <div className="journey-picker__label">Kam:</div>
             <select value={toCity} onChange={(e) => setToCity(e.target.value)}>
-              <CityOptions  cities={cities} />
+              <CityOptions cities={cities} />
             </select>
           </label>
           <label>
@@ -89,7 +89,7 @@ export const JourneyPicker = ({ onJourneyChange }) => {
           </label>
           <div className="journey-picker__controls">
             <button
-              disabled = {submitDisable}
+              disabled={submitDisable}
               className="btn"
               type="submit"
             >
