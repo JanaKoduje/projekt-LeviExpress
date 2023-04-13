@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { JourneyPicker } from '../JourneyPicker';
 import { JourneyDetail } from '../JourneyDetail';
-import { SelectedSeat } from '../SelectedSeat';
+import { SeatPicker } from '../SeatPicker';
 import { API_BASE_URL } from '../..';
 
 export const Home = () => {
@@ -13,7 +13,7 @@ export const Home = () => {
     setJourney(detail)
   }
 
-  const handleBuy = ()  => {
+  const handleBuy = () => {
     fetch(`${API_BASE_URL}/reservation`, {
       method: 'POST',
       headers: {
@@ -26,7 +26,7 @@ export const Home = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {navigate(`/reservation/${data.results.reservationId}`)})
+      .then((data) => { navigate(`/reservation/${data.results.reservationId}`) })
   }
 
 
@@ -35,8 +35,9 @@ export const Home = () => {
       <JourneyPicker onJourneyChange={handleJourneyChange} />
       {journey === null ? null :
         <>
+          {console.log("journey", journey)}
           <JourneyDetail journey={journey} />
-          <SelectedSeat number={journey.autoSeat} />
+          <SeatPicker seats={journey.seats} journeyId={journey.journeyId} />
 
           <div className="controls container">
             <button onClick={() => handleBuy()} className="btn btn--big" type="button">Rezervovat</button>
