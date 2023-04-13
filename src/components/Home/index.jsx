@@ -7,10 +7,12 @@ import { API_BASE_URL } from '../..';
 
 export const Home = () => {
   const [journey, setJourney] = useState(null);
+  const [userSeat, setUserSeat] = useState(null);
   const navigate = useNavigate();
 
   const handleJourneyChange = (detail) => {
     setJourney(detail)
+    setUserSeat(detail.autoSeat)
   }
 
   const handleBuy = () => {
@@ -21,7 +23,7 @@ export const Home = () => {
       },
       body: JSON.stringify({
         action: 'create',
-        seat: journey.autoSeat,
+        seat: userSeat,
         journeyId: journey.journeyId,
       }),
     })
@@ -34,12 +36,17 @@ export const Home = () => {
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
       {journey === null ? null :
+        
         <>
           <JourneyDetail journey={journey} />
-          <SeatPicker seats={journey.seats} journeyId={journey.journeyId} selectedSeat={journey.autoSeat}/>
+          <SeatPicker
+            seats={journey.seats}
+            journeyId={journey.journeyId}
+            selectedSeat={userSeat}
+            onSeatSelected={setUserSeat} />
 
           <div className="controls container">
-            <button onClick={() => handleBuy()} className="btn btn--big" type="button">Rezervovat</button>
+            <button onClick={handleBuy} className="btn btn--big" type="button">Rezervovat</button>
           </div>
         </>
       }
