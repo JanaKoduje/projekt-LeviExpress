@@ -35,9 +35,8 @@ export const Home = () => {
       <JourneyPicker onJourneyChange={handleJourneyChange} />
       {journey === null ? null :
         <>
-          {console.log("journey", journey)}
           <JourneyDetail journey={journey} />
-          <SeatPicker seats={journey.seats} journeyId={journey.journeyId} />
+          <SeatPicker seats={journey.seats} journeyId={journey.journeyId} selectedSeat={journey.autoSeat}/>
 
           <div className="controls container">
             <button onClick={() => handleBuy()} className="btn btn--big" type="button">Rezervovat</button>
