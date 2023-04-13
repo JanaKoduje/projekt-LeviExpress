@@ -3,8 +3,6 @@ import './style.css';
 
 export const Seat = ({ number, isOccupied, isSelected, onSelect }) => {
     const addedClass = isOccupied ? "seat--occupied" : (isSelected ? "seat--selected" : "")
-    
-    
 
     return (
         <>

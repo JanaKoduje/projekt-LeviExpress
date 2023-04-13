@@ -4,10 +4,15 @@ import { API_BASE_URL } from "../..";
 import './style.css';
 
 export const Reservation = () => {
-
     const { reservationId } = useParams();
-
     const [reservation, setReservation] = useState(null)
+
+    useEffect(() => {
+        fetch(`${API_BASE_URL}/reservation/?id=${reservationId}`)
+            .then((response) => response.json())
+            .then((data) => setReservation(data.results))
+
+    }, [])
 
     const NoReservation = () => {
         return (
@@ -17,19 +22,11 @@ export const Reservation = () => {
         )
     }
 
-    useEffect(() => {
-        fetch(`${API_BASE_URL}/reservation/?id=${reservationId}`)
-            .then((response) => response.json())
-            .then((data) => setReservation(data.results))
-
-    }, [])
-
-
     return (
         <>
             {reservation ?
                 <div className="reservation container">
-                    <h2>Vaše e-jízdenka č. HAQBAQASf7M</h2>
+                    <h2>Vaše e-jízdenka č. {reservationId}</h2>
                     <div className="reservation__body">
                         <div className="reservation__headings">
                             <p>Datum cesty:</p>
